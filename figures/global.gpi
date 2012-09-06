@@ -1,0 +1,22 @@
+
+set output "figures/".file.".tex"
+
+set terminal epslatex size 8.2cm,6cm color
+# for draftcls version
+#set terminal epslatex size 17cm,12cm color
+
+set termoption dash
+set style fill transparent pattern
+
+set key top left Left reverse
+
+set style line 1 lc rgb '#8b1a0e' pt 1 ps 1.5 lt 1 lw 5 # --- red
+set style line 2 lc rgb '#5e9c36' pt 6 ps 1.5 lt 1 lw 5 # --- green
+set style line 3 linecolor rgb '#0060ad' linetype 1 linewidth 2  # blue
+set style line 4 linecolor rgb '#dd181f' linetype 1 linewidth 2  # red
+
+#set xtics nomirror rotate by -45 offset first +0.17,0
+set grid #ytics
+#set ytics 500 scale 0.1
+
+

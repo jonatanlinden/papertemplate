@@ -1,10 +1,16 @@
+file = "myfigure-graph"
+
+# load standard stuff, including output path. Expects a variable 
+# called file, containing the name of the data file, minus the
+# extension .dat.
+load "figures/global.gpi"
 
 set nokey
 set ylabel 'time averaged over 100M cycles'
 set xlabel 'timeline'
 set style fill solid #1.00 border -1
 set style data histogram
-set grid
+
 set xrange[ 0: ]
 #set xtics 5 scale 0.1 nomirror
 #set ytics 500 scale 0.1
@@ -13,5 +19,5 @@ set xrange[ 0: ]
 
 set yrange[0:]
 #set xtics ("2253584800000000" 0, "2253644000000000" 582, "2253706700000000" 1164)
-plot "./data/myfiguredata.dat" u 2 t ""
+plot "./data/".file.".dat" u 2 t ""
 

@@ -262,7 +262,7 @@
 % IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
 % (recommended due to many improvements over 1.2) of subfig.sty supports
 % the caption=false option directly:
-%\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage[caption=false,font=footnotesize]{subfig}
 %
 % The latest version and documentation can be obtained at:
 % http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
@@ -333,6 +333,21 @@
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
+
+
+%-------------------------------------------------------------------------
+% Git versions
+%-------------------------------------------------------------------------
+\input{sections/vc}
+
+
+\makeatletter
+\def\ps@headings{%
+\def\@oddhead{\mbox{}\scriptsize\rightmark \hfil \thepage}%
+\def\@evenhead{\scriptsize\thepage \hfil \leftmark\mbox{}}%
+\def\@oddfoot{\scriptsize \VCRevision\ on \VCDateTEX \hfil DRAFT}%
+\def\@evenfoot{\scriptsize DRAFT\hfil \VCRevision\ on \VCDateTEX}}
+\makeatother
 
 
 \begin{document}
@@ -418,6 +433,10 @@ The abstract goes here.
 \IEEEpeerreviewmaketitle
 
 
+%--------------------------------------------------------------------
+% Update pagestyle here, for vc footers.
+
+\pagestyle{headings}
 
 
 

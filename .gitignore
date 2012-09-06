@@ -31,3 +31,4 @@
 *.pdf
 figures/*.eps
 figures/*.tex
+sections/vc.tex

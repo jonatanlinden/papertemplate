@@ -1,9 +1,9 @@
-file = "myfigure-graph"
+file = "myfigure"
 
 # load standard stuff, including output path. Expects a variable 
 # called file, containing the name of the data file, minus the
 # extension .dat.
-load "figures/global.gpi"
+load "figures/global_settings.gpi"
 
 set nokey
 set ylabel 'time averaged over 100M cycles'

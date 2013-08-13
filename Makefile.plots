@@ -1,0 +1,30 @@
+QUIET= #@
+GNUPLOT   := gnuplot
+EPSTOPDF  := epstopdf
+
+FIGURE_DIR=./figures
+DATA_DIR=./data
+RM=rm
+
+PLT_FILES := $(wildcard $(FIGURE_DIR)/*.gpi)
+PLT_FILES := $(filter-out $(FIGURE_DIR)/global_settings.gpi, $(PLT_FILES))
+TEXGRAPHICS := $(PLT_FILES:%.gpi=%.tex)
+PDFGRAPHICS := $(PLT_FILES:%.gpi=%.pdf)
+
+TARGET=$(PDFGRAPHICS)
+
+#$(info $(TEXGRAPHICS))
+
+all: $(TARGET)
+
+%.tex %.eps: %.gpi
+	$(GNUPLOT) $<
+
+%.pdf: %.eps
+	$(EPSTOPDF) --outfile=$@ $<
+
+clean:
+	$(RM) $(TEXGRAPHICS) $(PDFGRAPHICS)
+
+
+.PHONY: all clean

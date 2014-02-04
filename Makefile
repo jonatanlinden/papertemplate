@@ -1,36 +1,35 @@
 LATEX=pdflatex
+XELATEX=xelatex
 BIBTEX=bibtex
-
-GENPDF=./tools/gen-pdf.sh
 
 LATEX_FLAGS=-file-line-error -halt-on-error
 BIBTEX_FLAGS=
 
+PAPER=genpaper
+
+
 CLEAN_EXT=pdf aux bbl log blg snm nav out toc
-CLEAN_FILE=$(foreach ext, $(CLEAN_EXT), genpaper.$(ext))
+CLEAN_FILE=$(foreach ext, $(CLEAN_EXT), $(PAPER).$(ext))
 
 $(shell ./vc.sh)
 
-PAPER=genpaper.tex
-BIBNAME=genpaper
 
-TEX=$(PAPER)			\
+TEX=$(PAPER).tex		\
     sections/*
-
 
 all: pdf
 
-fast: $(TEX) #pdf-graphs
+fast: $(TEX) plots
 	$(LATEX)  $(LATEX_FLAGS)  $(PAPER)
 
 
-pdf: $(TEX) #pdf-graphs
+pdf: $(TEX) plots
 	$(LATEX)  $(LATEX_FLAGS)  $(PAPER)
-	$(BIBTEX) $(BIBTEX_FLAGS) $(BIBNAME)
+	$(BIBTEX) $(BIBTEX_FLAGS) $(PAPER)
 	$(LATEX)  $(LATEX_FLAGS)  $(PAPER)
 	$(LATEX)  $(LATEX_FLAGS)  $(PAPER)
 
-pdf-graphs:
+plots:
 	$(MAKE) -f Makefile.plots
 
 .PHONY: clean
